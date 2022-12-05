@@ -1,0 +1,13 @@
+.button {
+    border: 1px solid purple;
+    width: 120px;
+    height: 30px;
+    background: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.button:hover {
+    background-color: whitesmoke
+}

@@ -1,0 +1,15 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 50px;
+    max-width: 1920px;
+    margin: 0 auto;
+    border: 1px solid red;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+}
+
+.header span {
+    margin-right: 20px;
+}

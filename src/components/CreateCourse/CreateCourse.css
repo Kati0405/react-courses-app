@@ -1,0 +1,57 @@
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-item Button {
+    align-self: center;
+}
+
+.input, .textarea {
+    display: flex;
+    flex-direction: column;
+}
+
+textarea {
+    border: 1px solid yellowgreen;
+    resize: none;
+    height: 5rem;
+}
+
+.container {
+    margin-top: 10px;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+}
+
+.box-item {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.box Input {
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+span {
+    margin: 4px 0px;
+}
+
+.duration {
+    font-size: 24px;
+}
+  

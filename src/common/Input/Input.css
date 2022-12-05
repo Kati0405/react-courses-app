@@ -1,0 +1,7 @@
+input {
+    box-sizing: border-box;
+    height: 30px;
+    width: 170px;
+    border: 1px solid orange;
+    margin-right: 10px;
+}

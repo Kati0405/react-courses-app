@@ -1,0 +1,32 @@
+.course-card {
+    border: 1px solid green;
+    display: flex;
+    margin: 10px 0px
+}
+
+.flex-item {
+    width: 75%;
+  }
+  
+.column {
+    margin: 20px
+}
+
+.column span {
+    font-weight: bold;
+}
+
+h2 {
+    margin: 0;
+}
+
+.cut-text {
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    width: 200px; 
+    white-space: nowrap;
+}
+
+.description-item {
+    margin-bottom: 8px;
+}
