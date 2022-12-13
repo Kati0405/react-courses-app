@@ -1,11 +1,14 @@
 import React from 'react';
 import Button from '../../../../common/Button';
 
+import { Link } from 'react-router-dom';
+
 import './CourseCard.css';
 
 import convertMinutes from '../../../../helpers/pipeDuration';
 
 const CourseCard = ({
+	id,
 	title,
 	description,
 	creationDate,
@@ -31,7 +34,9 @@ const CourseCard = ({
 					<span>Created: </span>
 					{creationDate}
 				</div>
-				<Button buttonText={'Show course'} />
+				<Link to={`/courses/${id}`}>
+					<Button buttonText={'Show course'} />
+				</Link>
 			</div>
 		</div>
 	);

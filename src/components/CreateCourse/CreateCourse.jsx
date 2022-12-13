@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Button from '../../common/Button';
 import Input from '../../common/Input';
 
+import { useNavigate } from 'react-router-dom';
+
 import { v4 as uuidv4 } from 'uuid';
 
 import './CreateCourse.css';
@@ -40,6 +42,8 @@ const CreateCourse = ({
 		return true;
 	};
 
+	const navigate = useNavigate();
+
 	const addCourseHandler = () => {
 		const valid = validateForm();
 		if (valid) {
@@ -54,7 +58,8 @@ const CreateCourse = ({
 					authors: courseAuthorsIds,
 				},
 			]);
-			setActive(!active);
+
+			navigate('/courses');
 		}
 	};
 
@@ -87,91 +92,93 @@ const CreateCourse = ({
 		);
 	});
 	return (
-		<form className='create-course' id='form' noValidate>
-			<div className='form'>
-				<div className='form-item'>
-					<div className='input'>
-						<span>Title</span>
-						<Input
-							onChange={(e) => {
-								setTitle(e.target.value);
-							}}
+		<div className='courses'>
+			<form className='create-course' id='form' noValidate>
+				<div className='form'>
+					<div className='form-item'>
+						<div className='input'>
+							<Input
+								labelText={'Title'}
+								onChange={(e) => {
+									setTitle(e.target.value);
+								}}
+							/>
+						</div>
+						<Button
+							buttonText={'Create course'}
+							onClick={addCourseHandler}
+							type={'button'}
+							form={'form'}
 						/>
 					</div>
-					<Button
-						buttonText={'Create course'}
-						onClick={addCourseHandler}
-						type={'button'}
-						form={'form'}
-					/>
+					<div className='textarea'>
+						<span>Description</span>
+						<textarea
+							minLength='2'
+							onChange={(e) => {
+								setDescription(e.target.value);
+							}}
+						></textarea>
+					</div>
 				</div>
-				<div className='textarea'>
-					<span>Description</span>
-					<textarea
-						minLength='2'
-						onChange={(e) => {
-							setDescription(e.target.value);
-						}}
-					></textarea>
+				<div className='authors container'>
+					<div className='box'>
+						<h3>Add author</h3>
+						<Input
+							labelText={'Author name'}
+							placeholdetText={'Enter author name...'}
+							onChange={(e) => {
+								setAuthorName(e.target.value);
+							}}
+						/>
+						<Button
+							buttonText={'Create author'}
+							onClick={createAuthorHandler}
+							type={'button'}
+						/>
+					</div>
+					<div className='box'>
+						<h3>Authors</h3>
+						<ul className='box-items-list'>{authors}</ul>
+					</div>
+					<div className='box'>
+						<h3>Duration</h3>
+						<Input
+							labelText={'Duration'}
+							placeholdetText={'Enter course duration...'}
+							value={durationInput}
+							onChange={(e) => {
+								setDurationInput(e.target.value.replace(/\D/g, ''));
+							}}
+						/>
+						<p>
+							Duration:{' '}
+							<span className='duration'>{convertMinutes(durationInput)}</span>{' '}
+							hours
+						</p>
+					</div>
+					<div className='box'>
+						<h3>Course authors</h3>
+						<ul className='box-items-list'>
+							{courseAuthorsIds.map((authorId) => {
+								let author = authorsArray.filter((a) => a.id === authorId)[0];
+								return (
+									<li className='box-item' key={author.id}>
+										<p>{author.name}</p>{' '}
+										<Button
+											value={author.id}
+											buttonText={'Delete author'}
+											onClick={deleteAuthorFromCurrentCourseHandler}
+											type={'button'}
+										/>
+									</li>
+								);
+							})}
+						</ul>
+					</div>
 				</div>
-			</div>
-			<div className='authors container'>
-				<div className='box'>
-					<h3>Add author</h3>
-					<span>Author name</span>
-					<Input
-						placeholdetText={'Enter author name...'}
-						onChange={(e) => {
-							setAuthorName(e.target.value);
-						}}
-					/>
-					<Button
-						buttonText={'Create author'}
-						onClick={createAuthorHandler}
-						type={'button'}
-					/>
-				</div>
-				<div className='box'>
-					<h3>Authors</h3>
-					<ul className='box-items-list'>{authors}</ul>
-				</div>
-				<div className='box'>
-					<h3>Duration</h3>
-					<span>Duration</span>
-					<Input
-						placeholdetText={'Enter course duration...'}
-						value={durationInput}
-						onChange={(e) => {
-							setDurationInput(e.target.value.replace(/\D/g, ''));
-						}}
-					/>
-					<p>
-						Duration:{' '}
-						<span className='duration'>{convertMinutes(durationInput)}</span>{' '}
-						hours
-					</p>
-				</div>
-				<div className='box'>
-					<h3>Course authors</h3>
-					<ul className='box-items-list'>
-						{courseAuthorsIds.map((authorId) => {
-							let author = authorsArray.filter((a) => a.id === authorId)[0];
-							return (
-								<li className='box-item' key={author.id}>
-									<p>{author.name}</p>{' '}
-									<Button
-										value={author.id}
-										buttonText={'Delete author'}
-										onClick={deleteAuthorFromCurrentCourseHandler}
-										type={'button'}
-									/>
-								</li>
-							);
-						})}
-					</ul>
-				</div>
-			</div>
-		</form>
+			</form>
+		</div>
 	);
 };
 

@@ -1,0 +1,36 @@
+.course-info {
+  border: 1px solid lightskyblue;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px;
+  height: 88vh;
+}
+
+.course-info-card {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.flex-item {
+    width: 60%;
+  }
+
+.raw-item {
+    margin-right: 5%;
+  }
+
+.column span {
+  font-weight: bold;
+}
+
+.description-item {
+  margin-bottom: 8px;
+}
+
+button.back-btn {
+  align-self: flex-start;
+  border: none;
+  background: none;
+  cursor: pointer;
+}

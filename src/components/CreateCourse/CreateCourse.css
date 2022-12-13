@@ -47,11 +47,14 @@ textarea {
     margin-bottom: 10px;
 }
 
-span {
-    margin: 4px 0px;
-}
-
 .duration {
     font-size: 24px;
+}
+
+.courses {
+    padding: 15px;
+    border: 1px solid blue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: small;
 }
   

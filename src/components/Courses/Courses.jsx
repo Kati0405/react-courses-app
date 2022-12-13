@@ -24,27 +24,28 @@ const Courses = ({ onClick, courses, authorsArray }) => {
 			return false;
 		})
 		.map((course) => {
-			let courseAuthors1 = [];
+			let authorsResult = [];
 			authorsArray
 				.filter((el) => course.authors.includes(el.id))
 				.forEach((el) => {
-					courseAuthors1.push(el.name);
+					authorsResult.push(el.name);
 				});
 			return (
 				<li key={course.id}>
 					<CourseCard
+						id={course.id}
 						title={course.title}
 						description={course.description}
 						creationDate={course.creationDate}
 						duration={course.duration}
-						authors={courseAuthors1.join(', ')}
+						authors={authorsResult.join(', ')}
 					/>
 				</li>
 			);
 		});
 
 	return (
-		<>
+		<div className='courses'>
 			<div className='action-panel'>
 				<SearchBar
 					search={search}
@@ -56,7 +57,7 @@ const Courses = ({ onClick, courses, authorsArray }) => {
 				<Button buttonText={'Add new course'} onClick={onClick} />
 			</div>
 			<ul>{elements}</ul>
-		</>
+		</div>
 	);
 };
 

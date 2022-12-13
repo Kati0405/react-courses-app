@@ -10,7 +10,6 @@ const SearchBar = ({ onChange, onClick, search }) => {
 		<div className='search-bar'>
 			<Input
 				placeholdetText={'Enter course name or id...'}
-				labelText={'search-input'}
 				onChange={onChange}
 				search={search}
 			/>
